@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hodomojo_assignment/services/api_service.dart';
 
 void main() {
   runApp(const MyApp());
@@ -58,6 +59,18 @@ class _MyHomePageState extends State<MyHomePage> {
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
       _counter++;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    ApiService().getData().then((value) {
+      value.components.forEach((element) {
+        print(element.toString());
+      });
+    }).catchError((onError) {
+      print('Error: $onError');
     });
   }
 
