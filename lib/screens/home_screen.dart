@@ -17,24 +17,29 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
+    // Fetch data from API
     getDataFromApi();
   }
 
   void getDataFromApi() {
+    // Show loader while data is not fetched
     setState(() {
       isLoading = true;
     });
     ApiService().getData()
         .then((value) {
+          // Save value in header and hide loader
           setState(() {
             header = value;
             isLoading = false;
           });
         })
         .catchError((onError) {
+          // Hide loader
           setState(() {
             isLoading = false;
           });
+          // Show snackBar as error occurred
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             content: Text("Some error occurred, please try again later"),
           ));

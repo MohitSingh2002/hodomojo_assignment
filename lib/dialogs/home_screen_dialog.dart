@@ -22,9 +22,11 @@ class HomeScreenDialog extends StatelessWidget {
             width: width,
             height: height,
             child: Scrollbar(
+              // Use list view to show data fetched from the API
               child: ListView(
                 shrinkWrap: true,
                 children: [
+                  // Use stack to put header and header title one upon another
                   Stack(
                     children: [
                       ClipRRect(
@@ -63,12 +65,14 @@ class HomeScreenDialog extends StatelessWidget {
                       ),
                     ],
                   ),
+                  // Use list view builder to show list of components with never scrollable physics
                   ListView.builder(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     itemCount: header.components.length,
                     itemBuilder: (context, index) {
                       Component component = header.components.elementAt(index);
+                      // Check type of component, if text then show title and desc else show image.
                       if (component.type == 'text') {
                         return Container(
                           color: Colors.yellow.shade200,
@@ -91,6 +95,7 @@ class HomeScreenDialog extends StatelessWidget {
                           ),
                         );
                       } else {
+                        // Type is image, so, show only image.
                         return Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: ClipRRect(

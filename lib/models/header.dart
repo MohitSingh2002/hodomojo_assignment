@@ -12,6 +12,7 @@ class Header {
       required this.components,
       required this.coverUrl});
 
+  // Used to get Header Object from the map.
   factory Header.fromJson(Map<String, dynamic> json) => Header(
       title: json["title"],
       type: json["type"],
@@ -23,4 +24,5 @@ class Header {
   String toString() {
     return "Header(title: $title, type: $type, components: $components, coverUrl: $coverUrl)";
   }
+
 }

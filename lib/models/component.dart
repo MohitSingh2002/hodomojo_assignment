@@ -10,6 +10,7 @@ class Component {
       required this.title,
       required this.desc});
 
+  // Used to get Component Object from map.
   factory Component.fromJson(Map<String, dynamic> json) => Component(
       type: json["type"] == null ? "" : json["type"],
       url: json["url"] == null ? "" : json["url"],
@@ -20,4 +21,5 @@ class Component {
   String toString() {
     return "Component(type: $type, url: $url, title: $title, desc: $desc)";
   }
+
 }
